@@ -26,5 +26,20 @@ namespace AlgFund_08._03
             Engine.Draw(t);
             t.RefreshGraph();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            t.ClearGraph();
+            Engine.Tick();
+            Engine.Draw(t);
+            t.RefreshGraph();
+
+        }
+
+        private void start_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+
+        }
     }
 }
