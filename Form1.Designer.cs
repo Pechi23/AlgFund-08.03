@@ -1,6 +1,6 @@
 ﻿namespace AlgFund_08._03
 {
-    partial class Form1
+    partial class FormGame
     {
         /// <summary>
         /// Required designer variable.
@@ -52,8 +52,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1221, 612);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormGame";
+            this.Text = "FormGame";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

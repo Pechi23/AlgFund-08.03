@@ -14,10 +14,11 @@ namespace AlgFund_08._03
         public static List<MonsterMechanics> monsters = new List<MonsterMechanics>();
         public static Player player1;
         public static Point f;
+        public static string crtLevel;
         public static void Load(string fileName)
         {
             monsters.Clear();
-            TextReader load = new StreamReader(fileName);
+            TextReader load = new StreamReader(@"..\..\Resources\Maps\" + fileName);
             List<string> data = new List<string>();
             string buffer;
             while ((buffer = load.ReadLine()) != null)

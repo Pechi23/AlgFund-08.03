@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace AlgFund_08._03
 {
-    public partial class Form1 : Form
+    public partial class FormGame : Form
     {
         MyGraphics t = new MyGraphics();
-        public Form1()
+        public FormGame()
         {
             InitializeComponent();
         }
@@ -21,7 +21,7 @@ namespace AlgFund_08._03
         private void Form1_Load(object sender, EventArgs e)
         {
             t.InitGraph(pictureBox1);
-            Engine.Load(@"..\..\Maps.txt");
+            Engine.Load(Engine.crtLevel);
             Engine.DoMath(t);
             Engine.Draw(t);
             t.RefreshGraph();
