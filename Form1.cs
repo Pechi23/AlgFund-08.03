@@ -21,7 +21,7 @@ namespace AlgFund_08._03
         private void Form1_Load(object sender, EventArgs e)
         {
             t.InitGraph(pictureBox1);
-            Engine.Load("D:\\Faculta\\AlgFund 08.03\\Maps.txt");
+            Engine.Load(@"..\..\Maps.txt");
             Engine.DoMath(t);
             Engine.Draw(t);
             t.RefreshGraph();
@@ -36,10 +36,29 @@ namespace AlgFund_08._03
 
         }
 
-        private void start_Click(object sender, EventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            timer1.Enabled = true;
-
+            switch(e.KeyCode)
+            {
+                case Keys.W:
+                    Engine.player1.MoveUp();
+                    break;
+                case Keys.S:
+                    Engine.player1.MoveDown();
+                    break;
+                case Keys.A:
+                    Engine.player1.MoveLeft();
+                    break;
+                case Keys.D:
+                    Engine.player1.MoveRight();
+                    break;
+                case Keys.Space:
+                    timer1.Enabled = !timer1.Enabled;
+                    break;
+            }
+            t.ClearGraph();
+            Engine.Draw(t);
+            t.RefreshGraph();
         }
     }
 }
