@@ -33,7 +33,17 @@ namespace AlgFund_08._03
 
         private void loadButton_Click(object sender, EventArgs e)
         {
+            Engine.isCampaign = false;
             Engine.crtLevel = comboBox1.SelectedItem.ToString();
+            FormGame myFormGame = new FormGame();
+            myFormGame.ShowDialog();
+        }
+
+        private void campaignButton_Click(object sender, EventArgs e)
+        {
+            Engine.campaign = new Campaign();
+            Engine.isCampaign = true;
+            Engine.crtLevel = Engine.campaign.GetCurrentFile();
             FormGame myFormGame = new FormGame();
             myFormGame.ShowDialog();
         }

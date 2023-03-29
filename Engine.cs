@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,11 @@ namespace AlgFund_08._03
         public static Player player1;
         public static Point f;
         public static string crtLevel;
+        public static int nrDiamonds = 0;
+        public static Campaign campaign;
+        public static bool isCampaign;
+        public static bool isWin;
+        public static MyGraphics t = new MyGraphics();
         public static void Load(string fileName)
         {
             monsters.Clear();
@@ -37,8 +43,11 @@ namespace AlgFund_08._03
                         player1 = new Player(i, j);
                     else if (gMatrix[i, j] == 3)
                         f = new Point(i, j);
+                    else if (gMatrix[i, j] == 9)
+                        nrDiamonds++;
                 }
             }
+            isWin = false;
         }
         public static void Draw(MyGraphics handler)
         {
@@ -67,6 +76,8 @@ namespace AlgFund_08._03
             {
                 m.Draw(handler);
             }
+            handler.grp.DrawString(Engine.player1.lives.ToString(), new Font("Arial", 30, FontStyle.Bold), Brushes.Red, new Point(10, 10));
+            handler.grp.DrawString(nrDiamonds.ToString(), new Font("Arial", 30, FontStyle.Bold), Brushes.LightBlue, new Point(50, 10));
             player1.Draw(handler);
 
         }
@@ -74,6 +85,18 @@ namespace AlgFund_08._03
         {
             foreach (MonsterMechanics m in monsters)
                 m.Tick();
+            if (HasCollided(player1))
+            {
+                player1.lives--;
+            }
+        }
+        public static bool CheckForGameOver()
+        {
+            if (player1.lives <= 0)
+            {
+                return true;
+            }
+            return false;
         }
         public static float dW, dH;
         public static void DoMath(MyGraphics handler)
@@ -95,6 +118,44 @@ namespace AlgFund_08._03
                     return true;   
             }
             return false;
+        }
+
+        public static bool HasCollided(Player plyr)
+        {
+            foreach(MonsterMechanics mon in monsters)
+            {
+                if(plyr.locX == mon.locX && plyr.locY == mon.locY)
+                    return true;
+            }
+            
+            return false;
+        }
+        public static void CheckForWin(Player plyr)
+        {
+            if (gMatrix[plyr.locX, plyr.locY] == 3)
+            {
+                if (nrDiamonds == 0)
+                {
+                    if (isCampaign)
+                    {
+                        Engine.campaign.crtLevel++;
+                        if(Engine.campaign.crtLevel >= Engine.campaign.files.Count)
+                        {
+                            isWin = true;
+                        }
+                        else
+                        {
+                            crtLevel = Engine.campaign.GetCurrentFile();
+                            Load(crtLevel);
+                            DoMath(t);
+                        }
+                    }
+                    else
+                    {
+                        isWin = true;
+                    }
+                }
+            }
         }
     }
 }

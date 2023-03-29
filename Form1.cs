@@ -12,7 +12,7 @@ namespace AlgFund_08._03
 {
     public partial class FormGame : Form
     {
-        MyGraphics t = new MyGraphics();
+       
         public FormGame()
         {
             InitializeComponent();
@@ -20,19 +20,21 @@ namespace AlgFund_08._03
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            t.InitGraph(pictureBox1);
+            Engine.t.InitGraph(pictureBox1);
             Engine.Load(Engine.crtLevel);
-            Engine.DoMath(t);
-            Engine.Draw(t);
-            t.RefreshGraph();
+            Engine.DoMath(Engine.t);
+            Engine.Draw(Engine.t);
+            Engine.t.RefreshGraph();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            t.ClearGraph();
+            Engine.t.ClearGraph();
             Engine.Tick();
-            Engine.Draw(t);
-            t.RefreshGraph();
+            if (Engine.CheckForGameOver())
+                timer1.Enabled = false;
+            Engine.Draw(Engine.t);
+            Engine.t.RefreshGraph();
 
         }
 
@@ -56,9 +58,23 @@ namespace AlgFund_08._03
                     timer1.Enabled = !timer1.Enabled;
                     break;
             }
-            t.ClearGraph();
-            Engine.Draw(t);
-            t.RefreshGraph();
+            if (Engine.gMatrix[Engine.player1.locX, Engine.player1.locY] == 9)
+            {
+                Engine.gMatrix[Engine.player1.locX, Engine.player1.locY] = 0;
+                Engine.nrDiamonds--;
+            }
+
+            Engine.t.ClearGraph();
+            Engine.Draw(Engine.t);
+            Engine.t.RefreshGraph();
+
+            Engine.CheckForWin(Engine.player1);
+            if (Engine.isWin)
+            {
+                MessageBox.Show("You won");
+                timer1.Enabled = false;
+            }
+
         }
     }
 }

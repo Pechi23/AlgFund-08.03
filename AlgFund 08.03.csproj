@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Campaign.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -95,6 +96,8 @@
   <ItemGroup>
     <Content Include="Resources\Maps\Map1.txt" />
     <Content Include="Resources\Maps\Map2.txt" />
+    <Content Include="Resources\Maps\Map3.txt" />
+    <Content Include="Resources\Maps\Map4.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

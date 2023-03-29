@@ -9,11 +9,12 @@ namespace AlgFund_08._03
 {
     public class Player
     {
-        public int locX, locY;
+        public int locX, locY, lives;
         public Player(int locX, int locY)
         {
             this.locX = locX; 
             this.locY = locY;
+            this.lives = 5;
         }
         public void MoveUp()
         {

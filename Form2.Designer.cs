@@ -31,6 +31,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.loadButton = new System.Windows.Forms.Button();
+            this.campaignButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -51,19 +52,30 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(713, 415);
+            this.loadButton.Location = new System.Drawing.Point(503, 95);
             this.loadButton.Name = "loadButton";
-            this.loadButton.Size = new System.Drawing.Size(75, 23);
+            this.loadButton.Size = new System.Drawing.Size(163, 30);
             this.loadButton.TabIndex = 2;
             this.loadButton.Text = "Load Game";
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
+            // campaignButton
+            // 
+            this.campaignButton.Location = new System.Drawing.Point(503, 131);
+            this.campaignButton.Name = "campaignButton";
+            this.campaignButton.Size = new System.Drawing.Size(163, 30);
+            this.campaignButton.TabIndex = 3;
+            this.campaignButton.Text = "Campaign Mode";
+            this.campaignButton.UseVisualStyleBackColor = true;
+            this.campaignButton.Click += new System.EventHandler(this.campaignButton_Click);
             // 
             // FrmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.campaignButton);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listBox1);
@@ -79,5 +91,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Button campaignButton;
     }
 }
